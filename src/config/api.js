@@ -3,6 +3,10 @@ import axios from "axios";
 
 const BASE_URL = "https://jsonplaceholder.typicode.com/todos";
 
+
+
+// Below for function are used to communicate with api
+// In this project axios is used to communicate with api
 export const getData = ()=>{
     return axios.get(BASE_URL);
 }

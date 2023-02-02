@@ -3,20 +3,23 @@ import "./taskManager.css";
 
 import {deleteData,postData,updateData} from '../config/api'
 
+
+// This function is a react functional component resposible for managing the task
+// This component is used for adding, editing and deleting the task.
 function TaskManager({currSelected,data,setData,setCurrSelected}) {
 
-  let todoData;
+  // let todoData;
 
-  if(currSelected == -1){
-    todoData={
-      userId : data[data.length-1].userId,
-      id: data[data.length-1].id + 1,
-      title:"",
-      date:""
-    }
-  } else {
-    todoData={...data[currSelected-1],date: new Date().toUTCString()};
-  }
+  // if(currSelected == -1){
+  //   todoData={
+  //     userId : data[data.length-1].userId,
+  //     id: data[data.length-1].id + 1,
+  //     title:"",
+  //     date:""
+  //   }
+  // } else {
+  //   todoData={...data[currSelected-1],date: new Date().toUTCString()};
+  // }
 
   const [title,setTitle] = useState("");
 
@@ -25,8 +28,9 @@ function TaskManager({currSelected,data,setData,setCurrSelected}) {
   const addTask = ()=>{
     
     if(currSelected>-1){
+        const indx = data.findIndex(item=>item.id == currSelected);
         setData((currData)=>{
-          currData[currSelected].title = title;
+          currData[indx].title = title;
           return [...currData];
         })
     }
@@ -39,17 +43,19 @@ function TaskManager({currSelected,data,setData,setCurrSelected}) {
         completed:false
       }
       setData((prevData)=>{
-        prevData.push(task);
+        prevData.unshift(task);
         return [...prevData]
       })
     }
   }
 
   const onTaskDelete = ()=>{
+    const indx = data.findIndex(item=>item.id == currSelected);
     deleteData(currSelected)
     .then(res=>{
       setData((prevData)=>{
-        prevData.splice(currSelected,1);
+        console.log("Index before deleting",indx);
+        prevData.push(indx,1);
         return [...prevData];
       })
       setCurrSelected(-1);
@@ -64,7 +70,9 @@ function TaskManager({currSelected,data,setData,setCurrSelected}) {
   useEffect(()=>{
 
     if(currSelected>=0){
-      setTitle(data[currSelected]?.title);
+      const idx = data.findIndex(item=>item.id==currSelected);
+      console.log("Index is ",idx);
+      setTitle(data[idx]?.title);
     } else {
       setTitle("");
     }
