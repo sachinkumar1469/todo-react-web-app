@@ -55,7 +55,7 @@ function TaskManager({currSelected,data,setData,setCurrSelected}) {
     .then(res=>{
       setData((prevData)=>{
         console.log("Index before deleting",indx);
-        prevData.push(indx,1);
+        prevData.splice(indx,1);
         return [...prevData];
       })
       setCurrSelected(-1);
