@@ -11,7 +11,7 @@ export const postData = (data)=>{
     return axios.post(BASE_URL,data);
 }
 
-export const updataData = (id,data)=>{
+export const updateData = (id,data)=>{
     return axios.put(`${BASE_URL}/${id}`,data);
 }
 

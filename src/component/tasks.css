@@ -1,0 +1,28 @@
+.tasks{
+    width: 65%;
+    background-color: rgb(238, 252, 252);
+    padding-top: 2rem;
+    padding-left: 5rem;
+}
+
+.content .headings{
+    display: grid;
+    grid-template-columns: 2.5fr 1fr 1fr;
+    gap: 20px;
+}
+
+.content .headings p{
+    color: gray;
+}
+
+.tasks h2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 7rem;
+}
+.tasks h2 span svg{
+    color: darkmagenta;
+    cursor: pointer;
+    font-size: 1.8rem;
+}

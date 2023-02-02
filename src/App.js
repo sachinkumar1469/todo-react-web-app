@@ -8,12 +8,16 @@ import {getData} from './config/api';
 function App() {
   const [data,setData] = useState();
 
-  const [currSelected,setCurrSelected] = useState();
+  const [loading,setLoading] = useState(true);
+
+  const [currSelected,setCurrSelected] = useState(-1);
 
   useEffect(()=>{
     getData()
     .then(result=>{
       console.log(result.data);
+      setData(result.data);
+      setLoading(false);
     })
     .catch(err=>{
       console.log(err);
@@ -22,8 +26,14 @@ function App() {
 
   return (
     <div className="App">
-      <Tasks data={data} setCurrSelected={setCurrSelected}/>
-      <TaskManager setData={setData}/>
+      <div className="sidebar">
+        <p>T</p>
+        <p>O</p>
+        <p>D</p>
+        <p>O</p>
+      </div>
+      {!loading && <Tasks data={data} currSelected={currSelected} setCurrSelected={setCurrSelected}/>}
+      {!loading && <TaskManager setData={setData} setCurrSelected={setCurrSelected} currSelected={currSelected} data={data}/>}
     </div>
   );
 }

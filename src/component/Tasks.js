@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import './tasks.css';
+import TaskItem from './TaskItem';
+import {BsPlusLg} from 'react-icons/bs'
 
-function Tasks() {
+function Tasks({data,currSelected,setCurrSelected}) {
   return (
-    <div>
-      Task
+    <div className='tasks'>
+      <h2>Tasks <span> <BsPlusLg onClick={()=>{setCurrSelected(-1)}}/> </span></h2>
+      <div className="content">
+        <div className="headings">
+          <p>Task Name</p>
+          <p>Deadline</p>
+          <p>Status</p>
+        </div>
+        {data.map(item=>{return <TaskItem key={data.userId+""+data.id+Math.random().toString()} item={item} currSelected={currSelected} setCurrSelected={setCurrSelected}/>})}
+      </div>
     </div>
   )
 }

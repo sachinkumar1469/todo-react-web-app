@@ -2,9 +2,27 @@
   display: flex;
   align-items: stretch;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  position: relative;
 }
 .App > *{
-  border: 1px solid red;
+  /* border: 1px solid red; */
+}
+.sidebar{
+  width: 6rem;
+  background-color: darkmagenta;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.sidebar > p{
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-block: 20px;
+  cursor: default;
 }

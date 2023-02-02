@@ -1,0 +1,46 @@
+.headings{
+    padding-block: 14px;
+    border-bottom: 1px solid lightgray;
+}
+.headings .title{
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    
+    gap: 10px;
+    padding-left: 10px;
+}
+
+.title input{
+    border: 1px solid black;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    background-color: darkmagenta;
+    color: darkmagenta;
+}
+
+.deadline{
+    color: gray;
+}
+
+.status {
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: blue;
+    cursor: pointer;
+}
+.true{
+    background-color: rgb(14, 161, 14);
+    color: white;
+}
+
+.false{
+    background-color: rgb(255, 73, 73);
+    color: white;
+}
+
+.selected{
+    background-color: white;
+}
